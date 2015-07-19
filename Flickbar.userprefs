@@ -1,0 +1,16 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\TouchRecogniser.cs">
+    <Files>
+      <File FileName="Assets\Scripts\FootballScript.cs" Line="30" Column="45" />
+      <File FileName="Assets\Scripts\TouchRecogniser.cs" Line="81" Column="27" />
+      <File FileName="Assets\Scripts\GameManager.cs" Line="52" Column="2" />
+      <File FileName="Assets\Scripts\BallKillerScript.cs" Line="5" Column="1" />
+      <File FileName="Assets\Scripts\CrossbarScript.cs" Line="23" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
