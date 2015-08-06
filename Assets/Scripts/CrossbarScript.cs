@@ -7,7 +7,9 @@ public class CrossbarScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		
+		print ("Crossbar");
+		print ("Game:" + this.gameManager);
 	}
 	
 	// Update is called once per frame
@@ -17,6 +19,8 @@ public class CrossbarScript : MonoBehaviour {
 
 	void OnCollisionEnter ()
 	{
+		print ("Game:" + this.gameManager);
 		this.gameManager.BallHitCrossbar ();
+		print ("Game 2:" + this.gameManager);
 	}
 }
