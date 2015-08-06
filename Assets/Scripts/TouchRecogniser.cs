@@ -83,7 +83,7 @@ public class TouchRecogniser : MonoBehaviour {
 	
 	void GotDeltaPosition (Vector2 delta_)
 	{
-		print("hello");
+		//print("hello");
 	}
 
 	void KickFootballWithDirectionAndPower (Vector3 direction_, float power_)
@@ -95,7 +95,7 @@ public class TouchRecogniser : MonoBehaviour {
 
 	public void SetFootball (GameObject football_)
 	{
-		print ("football set");
+		//print ("football set");
 		this.football = football_;
 		this.footballScript = football_.GetComponent<FootballScript>();
 

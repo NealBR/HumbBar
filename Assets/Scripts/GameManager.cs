@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour {
 			return;
 		}
 
-		print ("BallDead");
+		//print ("BallDead");
 
 		this.score = 0;
 		DidSetScore ();
@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour {
 	
 	public void BallHitCrossbar ()
 	{
-		print ("Crossbar");
+		//print ("Crossbar");
 		this.hitCrossbar = true;
 		this.score++;
 		DidSetScore ();
@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour {
 	
 	public void BallHitPost ()
 	{
-		print ("Post");
+		//print ("Post");
 		CreateBall ();
 	}
 
