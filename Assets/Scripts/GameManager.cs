@@ -76,7 +76,11 @@ public class GameManager : MonoBehaviour {
 		Vector3 cameraPosition = this.mainCamera.transform.position;
 		cameraPosition = new Vector3 (footballPosition.x * 1.2f, cameraPosition.y, cameraPosition.z);
 		this.mainCamera.transform.position = cameraPosition;
-		this.mainCamera.transform.LookAt (this.goals.position);
+		this.mainCamera.transform.LookAt (this.goals.position);;
+		
+		Vector3 lookAt = this.goals.transform.position;
+		lookAt.y = 0.0f;
+		this.football.transform.LookAt (lookAt);
 	}
 
 	public void BallWentDead ()

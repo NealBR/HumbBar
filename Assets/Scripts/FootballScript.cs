@@ -35,7 +35,7 @@ public class FootballScript : MonoBehaviour {
 
 		Vector3 force = new Vector3(direction_.x * modifier * 5, power_ * modifier, direction_.y * 5 * modifier);
 		Rigidbody rigid = GetComponent<Rigidbody>();
-		rigid.AddForce (force);
+		rigid.AddRelativeForce (force);
 		this.initialForce = force;
 	}
 }
