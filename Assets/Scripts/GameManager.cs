@@ -59,7 +59,10 @@ public class GameManager : MonoBehaviour {
 
 		this.closeUpCamera.enabled = false;
 
-		int maxRange = 30;
+		int maxXRange = 30;
+
+		int minZRange = 15;
+		int maxZRange = 35;
 
 		this.football = (GameObject)Instantiate (footballObject, new Vector3 (0, 0.5f, 0), Quaternion.identity);
 		
@@ -70,13 +73,18 @@ public class GameManager : MonoBehaviour {
 		this.touchRecogniser.SetFootball (this.football);
 		
 		Vector3 footballPosition = this.football.transform.position;
-		footballPosition = new Vector3 (Random.Range (-maxRange, maxRange), footballPosition.y, footballPosition.z);
+		footballPosition = new Vector3 (Random.Range (-maxXRange, maxXRange), footballPosition.y, Random.Range (minZRange, maxZRange));
 		this.football.transform.position = footballPosition;
 		
 		Vector3 cameraPosition = this.mainCamera.transform.position;
-		cameraPosition = new Vector3 (footballPosition.x * 1.2f, cameraPosition.y, cameraPosition.z);
+		cameraPosition = new Vector3 (footballPosition.x * 1.2f, cameraPosition.y, footballPosition.z - 20);
 		this.mainCamera.transform.position = cameraPosition;
-		this.mainCamera.transform.LookAt (this.goals.position);;
+
+		this.mainCamera.transform.LookAt (this.goals.position);
+		Quaternion cameraRotation = this.mainCamera.transform.localRotation;
+		this.mainCamera.transform.Rotate (5, 0, 0);
+		//cameraRotation.x = 20;
+		//this.mainCamera.transform.rotation = cameraRotation;
 		
 		Vector3 lookAt = this.goals.transform.position;
 		lookAt.y = 0.0f;
