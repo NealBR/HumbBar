@@ -17,7 +17,7 @@ public class CrossbarScript : MonoBehaviour {
 	
 	}
 
-	void OnCollisionEnter ()
+	void OnCollisionEnter (Collision col)
 	{
 		print ("Game:" + this.gameManager);
 		this.gameManager.BallHitCrossbar ();
