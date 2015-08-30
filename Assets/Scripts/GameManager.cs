@@ -78,11 +78,6 @@ public class GameManager : MonoBehaviour {
 		this.minY = int.Parse(this.minYInput.text);
 		this.maxY = int.Parse(this.maxYInput.text);
 
-		int maxXRange = 30;
-
-		int minZRange = 15;
-		int maxZRange = 35;
-
 		this.football = (GameObject)Instantiate (footballObject, new Vector3 (0, 0.5f, 0), Quaternion.identity);
 		
 		Transform arrow = (Transform)this.football.transform.FindChild ("Arrow");
@@ -91,8 +86,8 @@ public class GameManager : MonoBehaviour {
 
 		this.touchRecogniser.SetFootball (this.football);
 		
-		Vector3 footballPosition = this.football.transform.position;
-		footballPosition = new Vector3 (Random.Range (-maxXRange, maxXRange), footballPosition.y, Random.Range (minZRange, maxZRange));
+		Vector3 footballPosition = randomBallPosition ();
+		footballPosition = new Vector3(footballPosition.x, this.football.transform.position.y, footballPosition.z);
 		this.football.transform.position = footballPosition;
 		
 		Vector3 cameraPosition = this.mainCamera.transform.position;
@@ -115,6 +110,84 @@ public class GameManager : MonoBehaviour {
 		this.footballScript.setMaxX(this.maxX);
 		this.footballScript.setMinY(this.minY);
 		this.footballScript.setMaxY(this.maxY);
+	}
+
+	Vector3 randomBallPosition ()
+	{
+		int random = Random.Range (0, 50);
+		if (random < 10) 
+		{
+			return getRandomLeftWingPosition ();
+		}
+		else if (random < 20) 
+		{
+			return getRandomRightWingPosition ();
+		}
+		else if (random < 30) 
+		{
+			return getCloseHalf ();
+		}
+		else if (random < 40) 
+		{
+			return getFarHalf ();
+		}
+
+		return get18YardBox ();
+	}
+
+	Vector3 getRandomLeftWingPosition ()
+	{
+		int minXRange = -35;
+		int maxXRange = -10;
+		
+		int minZRange = 15;
+		int maxZRange = 35;
+
+		return new Vector3 (Random.Range (minXRange, maxXRange), 0, Random.Range (minZRange, maxZRange));
+	}
+	
+	Vector3 getRandomRightWingPosition ()
+	{
+		int minXRange = 10;
+		int maxXRange = 35;
+		
+		int minZRange = 15;
+		int maxZRange = 35;
+		
+		return new Vector3 (Random.Range (minXRange, maxXRange), 0, Random.Range (minZRange, maxZRange));
+	}
+	
+	Vector3 getCloseHalf ()
+	{
+		int minXRange = -35;
+		int maxXRange = 35;
+		
+		int minZRange = 5;
+		int maxZRange = 40;
+		
+		return new Vector3 (Random.Range (minXRange, maxXRange), 0, Random.Range (minZRange, maxZRange));
+	}
+	
+	Vector3 getFarHalf ()
+	{
+		int minXRange = -35;
+		int maxXRange = 35;
+		
+		int minZRange = -30;
+		int maxZRange = -10;
+		
+		return new Vector3 (Random.Range (minXRange, maxXRange), 0, Random.Range (minZRange, maxZRange));
+	}
+	
+	Vector3 get18YardBox ()
+	{
+		int minXRange = -10;
+		int maxXRange = 10;
+		
+		int minZRange = 35;
+		int maxZRange = 42;
+		
+		return new Vector3 (Random.Range (minXRange, maxXRange), 0, Random.Range (minZRange, maxZRange));
 	}
 
 	public void BallWentDead ()
