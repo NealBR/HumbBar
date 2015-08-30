@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 public class TouchRecogniser : MonoBehaviour {
 
@@ -23,6 +24,11 @@ public class TouchRecogniser : MonoBehaviour {
 	// Update is called once per frame
 	void Update() 
 	{
+		if (EventSystem.current.IsPointerOverGameObject ())
+		{
+			return;
+		}
+
 		if (this.isDragging) 
 		{			
 			Renderer renderer = this.arrow.GetComponent<Renderer> ();

@@ -4,6 +4,12 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour {
 
+	public Slider powerSlider;
+	public InputField minXInput;
+	public InputField maxXInput;
+	public InputField minYInput;
+	public InputField maxYInput;
+
 	public Camera closeUpCamera;
 	public Camera mainCamera;
 
@@ -22,10 +28,18 @@ public class GameManager : MonoBehaviour {
 	bool hitCrossbar;
 	float crossbarWaitTime;
 	int score;
+	FootballScript footballScript;
+	float sliderPower;
+	
+	int minX;
+	int maxX;
+	int minY;
+	int maxY;
 
 	// Use this for initialization
 	void Start () 
 	{
+		this.sliderPower = 1.0f;
 		CreateBall ();
 	}
 	
@@ -59,6 +73,11 @@ public class GameManager : MonoBehaviour {
 
 		this.closeUpCamera.enabled = false;
 
+		this.minX = int.Parse(this.minXInput.text);
+		this.maxX = int.Parse(this.maxXInput.text);
+		this.minY = int.Parse(this.minYInput.text);
+		this.maxY = int.Parse(this.maxYInput.text);
+
 		int maxXRange = 30;
 
 		int minZRange = 15;
@@ -89,6 +108,13 @@ public class GameManager : MonoBehaviour {
 		Vector3 lookAt = this.goals.transform.position;
 		lookAt.y = 0.0f;
 		this.football.transform.LookAt (lookAt);
+
+		this.footballScript = this.football.GetComponent<FootballScript>();
+		this.footballScript.setSliderPower (this.sliderPower);
+		this.footballScript.setMinX(this.minX);
+		this.footballScript.setMaxX(this.maxX);
+		this.footballScript.setMinY(this.minY);
+		this.footballScript.setMaxY(this.maxY);
 	}
 
 	public void BallWentDead ()
@@ -104,6 +130,36 @@ public class GameManager : MonoBehaviour {
 		DidSetScore ();
 
 		CreateBall ();
+	}
+
+	public void SliderChanged (float sliderValue_)
+	{
+		this.sliderPower = sliderValue_;
+		this.footballScript.setSliderPower (sliderValue_);
+	}
+
+	public void MinXChanged (string fieldValue_)
+	{
+		this.minX = int.Parse(fieldValue_);
+		this.footballScript.setMinX(this.minX);
+	}
+	
+	public void MaxXChanged (string fieldValue_)
+	{
+		this.maxX = int.Parse(fieldValue_);
+		this.footballScript.setMaxX(this.maxX);
+	}
+	
+	public void MinYChanged (string fieldValue_)
+	{
+		this.minY = int.Parse(fieldValue_);
+		this.footballScript.setMinY(this.minY);
+	}
+	
+	public void MaxYChanged (string fieldValue_)
+	{
+		this.maxY = int.Parse(fieldValue_);
+		this.footballScript.setMaxY(this.maxY);
 	}
 	
 	public void BallHitCrossbar ()
