@@ -58,8 +58,16 @@ public class TouchRecogniser : MonoBehaviour {
 			Vector3 mousePosition = Input.mousePosition;
 			GotMousePosition(mousePosition);
 
-			float power = Vector3.Distance(this.startPosition, mousePosition);
-			KickFootballWithDirectionAndPower(this.difference, power);
+			if(this.startPosition.y < mousePosition.y)
+			{
+				startPosition = new Vector3 (0, 0, 0);
+				difference = new Vector3 (0, 0, 0);
+			}
+			else
+			{
+				float power = Vector3.Distance(this.startPosition, mousePosition);
+				KickFootballWithDirectionAndPower(this.difference, power);
+			}
 		}
 	}
 
