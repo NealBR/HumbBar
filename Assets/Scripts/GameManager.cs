@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour {
 	public InputField minYInput;
 	public InputField maxYInput;
 
+	public InputField ballXInput;
+	public InputField ballZInput;
+
 	public Camera closeUpCamera;
 	public Camera mainCamera;
 
@@ -104,6 +107,53 @@ public class GameManager : MonoBehaviour {
 		lookAt.y = 0.0f;
 		this.football.transform.LookAt (lookAt);
 
+		this.footballScript = this.football.GetComponent<FootballScript>();
+		this.footballScript.setSliderPower (this.sliderPower);
+		this.footballScript.setMinX(this.minX);
+		this.footballScript.setMaxX(this.maxX);
+		this.footballScript.setMinY(this.minY);
+		this.footballScript.setMaxY(this.maxY);
+	}
+
+	public void CreateBallAtInputs()
+	{
+		if (this.football)
+		{
+			Destroy (this.football);
+		}
+		
+		this.closeUpCamera.enabled = false;
+		
+		this.minX = int.Parse(this.minXInput.text);
+		this.maxX = int.Parse(this.maxXInput.text);
+		this.minY = int.Parse(this.minYInput.text);
+		this.maxY = int.Parse(this.maxYInput.text);
+		
+		this.football = (GameObject)Instantiate (footballObject, new Vector3 (0, 0.5f, 0), Quaternion.identity);
+		
+		Transform arrow = (Transform)this.football.transform.FindChild ("Arrow");
+		Renderer renderer = arrow.GetComponent<Renderer> ();
+		renderer.enabled = false;
+		
+		this.touchRecogniser.SetFootball (this.football);
+		
+		Vector3 footballPosition = new Vector3(int.Parse(this.ballXInput.text), 0.5f, int.Parse(this.ballZInput.text));
+		this.football.transform.position = footballPosition;
+		
+		Vector3 cameraPosition = this.mainCamera.transform.position;
+		cameraPosition = new Vector3 (footballPosition.x * 1.2f, cameraPosition.y, footballPosition.z - 20);
+		this.mainCamera.transform.position = cameraPosition;
+		
+		this.mainCamera.transform.LookAt (this.goals.position);
+		Quaternion cameraRotation = this.mainCamera.transform.localRotation;
+		this.mainCamera.transform.Rotate (5, 0, 0);
+		//cameraRotation.x = 20;
+		//this.mainCamera.transform.rotation = cameraRotation;
+		
+		Vector3 lookAt = this.goals.transform.position;
+		lookAt.y = 0.0f;
+		this.football.transform.LookAt (lookAt);
+		
 		this.footballScript = this.football.GetComponent<FootballScript>();
 		this.footballScript.setSliderPower (this.sliderPower);
 		this.footballScript.setMinX(this.minX);
