@@ -1693,6 +1693,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1040604882}
+  - 114: {fileID: 1040604883}
   m_Layer: 0
   m_Name: Goals
   m_TagString: Untagged
@@ -1715,6 +1716,17 @@ Transform:
   - {fileID: 1218695401}
   m_Father: {fileID: 0}
   m_RootOrder: 7
+--- !u!114 &1040604883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1040604881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3895357ceefab48409af26e014ca23a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1066483759
 GameObject:
   m_ObjectHideFlags: 0
@@ -2441,6 +2453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 2107509432}
+  goalScript: {fileID: 1040604883}
 --- !u!1 &1325353876
 GameObject:
   m_ObjectHideFlags: 0
@@ -2905,7 +2918,7 @@ MeshCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1449098438}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 91b9858257c07f5499fda0e8410a7e51, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -4848,8 +4861,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2136601366}
-  m_LocalRotation: {x: 0, y: .631691158, z: 0, w: .775220156}
-  m_LocalPosition: {x: -25.1200008, y: 5.86999989, z: 61.2400017}
+  m_LocalRotation: {x: .163662896, y: .562011898, z: -.114598013, w: .802635968}
+  m_LocalPosition: {x: -7.19999981, y: 4.94999981, z: 65.6500015}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

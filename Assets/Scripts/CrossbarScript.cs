@@ -4,12 +4,10 @@ using System.Collections;
 public class CrossbarScript : MonoBehaviour {
 	
 	public GameManager gameManager;
+	public GoalScript goalScript;
 
 	// Use this for initialization
 	void Start () {
-		
-		print ("Crossbar");
-		print ("Game:" + this.gameManager);
 	}
 	
 	// Update is called once per frame
@@ -19,8 +17,7 @@ public class CrossbarScript : MonoBehaviour {
 
 	void OnCollisionEnter (Collision col)
 	{
-		print ("Game:" + this.gameManager);
 		this.gameManager.BallHitCrossbar ();
-		print ("Game 2:" + this.gameManager);
+		this.goalScript.GoalsWereHit ();
 	}
 }
