@@ -42,14 +42,6 @@ public class TouchRecogniser : MonoBehaviour {
 			}
 		}
 
-		if (Input.mousePosition.y > 570) 
-		{
-			this.isDragging = false;
-			startPosition = new Vector3 (0, 0, 0);
-			difference = new Vector3 (0, 0, 0);
-			return;
-		}
-
 		if (this.isDragging) 
 		{			
 			Renderer renderer = this.arrow.GetComponent<Renderer> ();
