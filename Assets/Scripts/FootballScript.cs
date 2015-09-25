@@ -3,18 +3,23 @@ using System.Collections;
 
 public class FootballScript : MonoBehaviour {
 
-	Vector3 initialForce;
+	protected Vector3 initialForce;
 	
-	float time;
-	float modifier;
-	Vector3 speed;
-	float gravity;
-	float sliderPower;
+	protected float time;
+	protected float modifier;
+	protected Vector3 speed;
+	protected float gravity;
+	protected float sliderPower;
 	
-	int minX;
-	int maxX;
-	int minY;
-	int maxY;
+	protected int minX;
+	protected int maxX;
+	protected int minY;
+	protected int maxY;
+
+	public FootballScript()
+	{
+
+	}
 
 	// Use this for initialization
 	void Start () 

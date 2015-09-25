@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class GameManager : MonoBehaviour {
+	
+	public PitchScript pitch;
 
 	public Slider powerSlider;
 	public InputField minXInput;
@@ -113,6 +115,8 @@ public class GameManager : MonoBehaviour {
 		this.footballScript.setMaxX(this.maxX);
 		this.footballScript.setMinY(this.minY);
 		this.footballScript.setMaxY(this.maxY);
+
+		this.pitch.Reset ();
 	}
 
 	public void CreateBallAtInputs()
