@@ -2881,6 +2881,7 @@ GameObject:
   - 33: {fileID: 1449098441}
   - 64: {fileID: 1449098440}
   - 23: {fileID: 1449098439}
+  - 114: {fileID: 1449098443}
   m_Layer: 0
   m_Name: Field
   m_TagString: Untagged
@@ -2943,6 +2944,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
+--- !u!114 &1449098443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1449098438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 875015a58b16c0b428eb2c7f453145e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 2107509432}
 --- !u!1 &1470651098
 GameObject:
   m_ObjectHideFlags: 0
@@ -4682,6 +4695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9d07051f002dcf43ad79cb95f1e9ba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pitch: {fileID: 1449098443}
   powerSlider: {fileID: 1715773523}
   minXInput: {fileID: 1948259748}
   maxXInput: {fileID: 1646104918}
