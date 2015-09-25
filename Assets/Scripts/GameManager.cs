@@ -83,7 +83,10 @@ public class GameManager : MonoBehaviour {
 		this.minY = int.Parse(this.minYInput.text);
 		this.maxY = int.Parse(this.maxYInput.text);
 
-		this.football = (GameObject)Instantiate (footballObject, new Vector3 (0, 0.5f, 0), Quaternion.identity);
+		this.football = (GameObject)Instantiate (footballObject, new Vector3 (0, 0, 0), Quaternion.identity);
+		
+		float yPos = this.football.transform.localScale.y * 0.5f;
+		print (yPos);
 		
 		Transform arrow = (Transform)this.football.transform.FindChild ("Arrow");
 		Renderer renderer = arrow.GetComponent<Renderer> ();
@@ -92,7 +95,7 @@ public class GameManager : MonoBehaviour {
 		this.touchRecogniser.SetFootball (this.football);
 		
 		Vector3 footballPosition = randomBallPosition ();
-		footballPosition = new Vector3(footballPosition.x, this.football.transform.position.y, footballPosition.z);
+		footballPosition = new Vector3(footballPosition.x, yPos, footballPosition.z);
 		this.football.transform.position = footballPosition;
 		
 		Vector3 cameraPosition = this.mainCamera.transform.position;
@@ -132,8 +135,11 @@ public class GameManager : MonoBehaviour {
 		this.maxX = int.Parse(this.maxXInput.text);
 		this.minY = int.Parse(this.minYInput.text);
 		this.maxY = int.Parse(this.maxYInput.text);
+
+		float yPos = this.football.transform.localScale.y * 0.5f;
+		print (yPos);
 		
-		this.football = (GameObject)Instantiate (footballObject, new Vector3 (0, 0.5f, 0), Quaternion.identity);
+		this.football = (GameObject)Instantiate (footballObject, new Vector3 (0, yPos, 0), Quaternion.identity);
 		
 		Transform arrow = (Transform)this.football.transform.FindChild ("Arrow");
 		Renderer renderer = arrow.GetComponent<Renderer> ();
@@ -141,7 +147,7 @@ public class GameManager : MonoBehaviour {
 		
 		this.touchRecogniser.SetFootball (this.football);
 		
-		Vector3 footballPosition = new Vector3(int.Parse(this.ballXInput.text), 0.5f, int.Parse(this.ballZInput.text));
+		Vector3 footballPosition = new Vector3(int.Parse(this.ballXInput.text), this.football.transform.position.y, int.Parse(this.ballZInput.text));
 		this.football.transform.position = footballPosition;
 		
 		Vector3 cameraPosition = this.mainCamera.transform.position;
