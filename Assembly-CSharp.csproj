@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\BallKillerScript.cs" />
      <Compile Include="Assets\Scripts\CrossbarScript.cs" />
      <Compile Include="Assets\Scripts\CrowdParalax.cs" />
+     <Compile Include="Assets\Scripts\FootballMovementScript.cs" />
      <Compile Include="Assets\Scripts\FootballScript.cs" />
      <Compile Include="Assets\Scripts\FootballWithArrowScript.cs" />
      <Compile Include="Assets\Scripts\FootballWithBallsScript.cs" />
