@@ -92,14 +92,17 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   tracer: {fileID: 171844, guid: 82cadfd1cda077c4c947d93b0ea12bf5, type: 2}
   tracerSmall: {fileID: 171844, guid: 3250d3c892bfc1c49ae112ba5f4deec8, type: 2}
-  crossbarCenterOffset: .200000003
+  crossbarCenterOffset: .5
   startPosition: {x: 0, y: .5, z: 20}
   endPosition: {x: 0, y: 0, z: 0}
   controlPoint1: {x: 0, y: 0, z: 0}
   controlPoint2: {x: 0, y: 0, z: 0}
-  tracers: 1
-  curve: 5
-  height: 3
+  tracers: 0
+  curve: 4
+  height: 5
+  controlPoint1ZLength: .400000006
+  controlPoint2ZLength: .699999988
+  controlPoint2Height: .600000024
   finished: 0
 --- !u!135 &13555708
 SphereCollider:
