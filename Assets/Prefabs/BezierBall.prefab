@@ -28,7 +28,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 111320}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: .25, z: 10}
+  m_LocalPosition: {x: 0, y: .25, z: 15.3500004}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -94,8 +94,11 @@ MonoBehaviour:
   predictor: {fileID: 11447414}
   tracer: {fileID: 171844, guid: 82cadfd1cda077c4c947d93b0ea12bf5, type: 2}
   tracerSmall: {fileID: 171844, guid: 3250d3c892bfc1c49ae112ba5f4deec8, type: 2}
-  crossbarCenterOffset: .600000024
-  startPosition: {x: 0, y: .25, z: 10}
+  crossbarCenterOffset: .680000007
+  currentTime: 0
+  ratioForTimeScale: .5
+  timeScaleToDrop: .300000012
+  totalTime: .5
   endPosition: {x: 0, y: 0, z: 0}
   controlPoint1: {x: 0, y: 0, z: 0}
   controlPoint2: {x: 0, y: 0, z: 0}
@@ -105,8 +108,6 @@ MonoBehaviour:
   controlPoint1ZLength: .5
   controlPoint2ZLength: .699999988
   controlPoint2Height: .649999976
-  totalTime: 1
-  currentTime: 0
   type: 0
   finished: 0
 --- !u!114 &11447414
@@ -124,7 +125,6 @@ MonoBehaviour:
   tracerSmall: {fileID: 171844, guid: 3250d3c892bfc1c49ae112ba5f4deec8, type: 2}
   tracerEnds: {fileID: 151212, guid: 08d5f8cb7cc01ff4799fed2fcdc2ab20, type: 2}
   crossbarHeight: 0
-  ballStartPosition: {x: 0, y: .5, z: 10}
 --- !u!135 &13555708
 SphereCollider:
   m_ObjectHideFlags: 1

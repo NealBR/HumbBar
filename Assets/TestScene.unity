@@ -239,7 +239,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 459579889}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
@@ -315,26 +315,6 @@ Prefab:
     - target: {fileID: 479366, guid: a223beaaf08f3c44b9671b6ca8a5205c, type: 2}
       propertyPath: m_RootOrder
       value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 11411624, guid: a223beaaf08f3c44b9671b6ca8a5205c, type: 2}
-      propertyPath: controlPoint2Height
-      value: .649999976
-      objectReference: {fileID: 0}
-    - target: {fileID: 11411624, guid: a223beaaf08f3c44b9671b6ca8a5205c, type: 2}
-      propertyPath: totalTime
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 111320, guid: a223beaaf08f3c44b9671b6ca8a5205c, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11411624, guid: a223beaaf08f3c44b9671b6ca8a5205c, type: 2}
-      propertyPath: crossbarCenterOffset
-      value: .680000007
-      objectReference: {fileID: 0}
-    - target: {fileID: 11411624, guid: a223beaaf08f3c44b9671b6ca8a5205c, type: 2}
-      propertyPath: timeScaleToDrop
-      value: .300000012
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a223beaaf08f3c44b9671b6ca8a5205c, type: 2}
