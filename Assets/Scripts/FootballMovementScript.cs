@@ -101,7 +101,7 @@ public class FootballMovementScript : MonoBehaviour {
 		float xLength = endPosition.x - startPosition.x;
 		float zLength = endPosition.z - this.startPosition.z;
 
-		Vector3 controlPoint1 = new Vector3 (startPosition.x + xLength, endPosition.y + this.height, startPosition.z + (zLength * this.controlPoint1ZLength));
+		Vector3 controlPoint1 = new Vector3 (startPosition.x + xLength + this.curve, endPosition.y + this.height, startPosition.z + (zLength * this.controlPoint1ZLength));
 		return controlPoint1;
 	}
 	
@@ -110,7 +110,7 @@ public class FootballMovementScript : MonoBehaviour {
 		float xLength = endPosition.x - startPosition.x;
 		float zLength = endPosition.z - this.startPosition.z;
 		
-		Vector3 controlPoint2 = new Vector3 (startPosition.x + xLength, endPosition.y + (this.height * this.controlPoint2Height), startPosition.z + (zLength * this.controlPoint2ZLength));
+		Vector3 controlPoint2 = new Vector3 (startPosition.x + xLength + this.curve, endPosition.y + (this.height * this.controlPoint2Height), startPosition.z + (zLength * this.controlPoint2ZLength));
 		return controlPoint2;
 	}
 
