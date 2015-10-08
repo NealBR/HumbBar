@@ -4,14 +4,25 @@ using System.Collections;
 public class FootballMovementScript : MonoBehaviour {
 	
 	public GameManager gameManager;
+
+	public PredictionScript predictor;
 	
 	public GameObject tracer;
 	public GameObject tracerSmall;
 
 	[Range(0.0f, 1.0f)]
 	public float crossbarCenterOffset;
+	public float currentTime;
 	
-	public Vector3 startPosition;
+	[Range(0.0f, 1.0f)]
+	public float ratioForTimeScale = 0.5f;
+	
+	[Range(0.0f, 1.0f)]
+	public float timeScaleToDrop = 1.0f;
+	
+	public float totalTime;
+	
+	Vector3 startPosition;
 	public Vector3 endPosition;
 
 	public Vector3 controlPoint1;
@@ -31,6 +42,8 @@ public class FootballMovementScript : MonoBehaviour {
 	[Range(0.0f, 1.0f)]
 	public float controlPoint2Height = 0.5f;
 
+	public int type;
+
 	public bool finished;
 	
 	bool kicked;
@@ -43,21 +56,14 @@ public class FootballMovementScript : MonoBehaviour {
 	float previousDelta;
 	Vector3 previousPosition;
 
-	float totalTime;
-	float currentTime;
-
 	// Use this for initialization
 	void Start () {
-		
+
+		this.startPosition = this.transform.position;
 		this.body = this.GetComponent<Rigidbody>();
-		this.body.useGravity = false;
-
-		this.forced = false;
-
-		this.currentTime = 0;
-		this.totalTime = 1;
 
 		this.crossbar = GameObject.Find ("Crossbar").transform;
+		this.predictor.crossbarHeight = this.crossbar.position.y;
 			
 		float yPos = this.transform.localScale.y * 0.5f;
 
@@ -65,76 +71,98 @@ public class FootballMovementScript : MonoBehaviour {
 		{
 			this.startPosition.y = yPos;
 		}
-		
-		float crossBarRadius = this.crossbar.localScale.z * 0.5f;
-		float ballRadius = this.transform.localScale.x * 0.5f;
-
-		float radius = crossBarRadius + ballRadius;
-		radius *= 1.1f;
-
-		float xPos = this.crossbar.position.x;
-
-		float offset = this.crossbar.transform.localScale.y - ((this.crossbar.transform.localScale.y * 2) * this.crossbarCenterOffset);
-		xPos -= offset;
-
-		print(offset);
-
-//		xPos += this.crossbar.transform.localScale.y * this.crossbarCenterOffset;
-
-		this.endPosition = new Vector3 (xPos, this.crossbar.position.y + radius * 0.4f, this.crossbar.position.z - radius);
-
-		float xLength = this.endPosition.x - this.startPosition.x;
-		float zLength = this.endPosition.z - this.startPosition.z;
-
-		this.controlPoint1 = new Vector3 (this.startPosition.x + xLength + this.curve, this.endPosition.y + this.height, this.startPosition.z + (zLength * this.controlPoint1ZLength));
-		this.controlPoint2 = new Vector3 (this.startPosition.x + xLength + (this.curve * 0.6f), this.endPosition.y + (this.height * this.controlPoint2Height), this.startPosition.z + (zLength * this.controlPoint2ZLength));
 
 		if(this.tracers)
 		{
-			{
-				GameObject tracer = GameObject.Instantiate(this.tracer);
-				tracer.transform.position = this.endPosition;
-			}
+			AddTracers();
+		}
+	}
 
-			{	
-				GameObject tracer = GameObject.Instantiate(this.tracer);
-				tracer.transform.position = this.startPosition;
-			}
+	public bool WasKicked ()
+	{
+		return this.kicked;
+	}
 
-			{	
-				GameObject tracer = GameObject.Instantiate(this.tracer);
-				tracer.transform.position = this.controlPoint1;
-			}
+	public void SetVelocity (Vector2 velocity)
+	{		
+		this.endPosition = new Vector3 (this.startPosition.x + velocity.x, this.crossbar.position.y, this.startPosition.z + velocity.y);
+		
+		float xLength = this.endPosition.x - this.startPosition.x;
+		float zLength = this.endPosition.z - this.startPosition.z;
+		
+		this.controlPoint1 = ControlPoint1ForStartAndEndPosition(this.startPosition, this.endPosition);
+		this.controlPoint2 = ControlPoint2ForStartAndEndPosition(this.startPosition, this.endPosition);
+	
+		this.kicked = true;	
+	}
 
-			{	
-				GameObject tracer = GameObject.Instantiate(this.tracer);
-				tracer.transform.position = this.controlPoint2;
-			}
+	public Vector3 ControlPoint1ForStartAndEndPosition (Vector3 startPosition, Vector3 endPosition)
+	{
+		float xLength = endPosition.x - startPosition.x;
+		float zLength = endPosition.z - this.startPosition.z;
 
-			{	
-				GameObject tracer = GameObject.Instantiate(this.tracer);
-				tracer.transform.position = this.endPosition;
-			}
+		Vector3 controlPoint1 = new Vector3 (startPosition.x + xLength, endPosition.y + this.height, startPosition.z + (zLength * this.controlPoint1ZLength));
+		return controlPoint1;
+	}
+	
+	public Vector3 ControlPoint2ForStartAndEndPosition (Vector3 startPosition, Vector3 endPosition)
+	{
+		float xLength = endPosition.x - startPosition.x;
+		float zLength = endPosition.z - this.startPosition.z;
+		
+		Vector3 controlPoint2 = new Vector3 (startPosition.x + xLength, endPosition.y + (this.height * this.controlPoint2Height), startPosition.z + (zLength * this.controlPoint2ZLength));
+		return controlPoint2;
+	}
+
+	void AddTracers ()
+	{				
+		{	
+			GameObject tracer = GameObject.Instantiate(this.tracer);
+			tracer.transform.position = this.startPosition;
+		}
+		
+		{	
+			GameObject tracer = GameObject.Instantiate(this.tracer);
+			tracer.transform.position = this.controlPoint1;
+		}
+		
+		{	
+			GameObject tracer = GameObject.Instantiate(this.tracer);
+			tracer.transform.position = this.controlPoint2;
+		}
+		
+		{	
+			GameObject tracer = GameObject.Instantiate(this.tracer);
+			tracer.transform.position = this.endPosition;
 		}
 
 		Color c1 = Color.red;
 		Color c2 = Color.red;
 		int lengthOfLineRenderer = 4;
-		
-		if(this.tracers)
-		{
-			LineRenderer lineRenderer = gameObject.AddComponent<LineRenderer>();
-			lineRenderer.material = new Material(Shader.Find("Particles/Additive"));
-			lineRenderer.SetColors(c1, c2);
-			lineRenderer.SetWidth(0.2F, 0.2F);
-			lineRenderer.SetVertexCount(lengthOfLineRenderer);
-			lineRenderer.SetPosition(0, this.startPosition);
-			lineRenderer.SetPosition(1, this.controlPoint1);
-			lineRenderer.SetPosition(2, this.controlPoint2);
-			lineRenderer.SetPosition(3, this.endPosition);
-		}
 
-		Invoke("ShouldKick", 2.0f);
+		LineRenderer lineRenderer = gameObject.AddComponent<LineRenderer>();
+		lineRenderer.material = new Material(Shader.Find("Particles/Additive"));
+		lineRenderer.SetColors(c1, c2);
+		lineRenderer.SetWidth(0.2F, 0.2F);
+		lineRenderer.SetVertexCount(lengthOfLineRenderer);
+		lineRenderer.SetPosition(0, this.startPosition);
+		lineRenderer.SetPosition(1, this.controlPoint1);
+		lineRenderer.SetPosition(2, this.controlPoint2);
+		lineRenderer.SetPosition(3, this.endPosition);
+	}
+
+	void Reset()
+	{
+		Time.timeScale = 1.0f;
+		this.body.useGravity = false;
+		this.kicked = false;
+		this.currentTime = 0.0f;
+		this.finished = false;
+		this.forced = false;
+		this.transform.position = this.startPosition;
+		this.body.velocity = Vector3.zero;
+		this.body.angularVelocity = Vector3.zero;
+		this.transform.rotation = Quaternion.identity;
 	}
 
 	void ShouldKick()
@@ -158,6 +186,8 @@ public class FootballMovementScript : MonoBehaviour {
 				print(this.transform.position);
 
 				AddForceAfterBezier();
+
+				Invoke("Reset", 2.0f);
 			}
 			return;
 		}
@@ -177,11 +207,21 @@ public class FootballMovementScript : MonoBehaviour {
 			this.finished = true;
 		}
 
+		if(this.currentTime > this.totalTime * this.ratioForTimeScale)
+		{
+			if(this.timeScaleToDrop != Time.timeScale)
+			{
+				Time.timeScale = this.timeScaleToDrop;
+			}
+		}
+
 		MoveBallViaBezier(deltaTime);
 	}
 
 	void AddForceAfterBezier () 
 	{
+		this.body.velocity = Vector3.zero;
+		this.body.angularVelocity = Vector3.zero;
 		float x1 = this.controlPoint2.x;
 		float y1 = this.controlPoint2.y;
 		float z1 = this.controlPoint2.z;
@@ -210,16 +250,8 @@ public class FootballMovementScript : MonoBehaviour {
 		float y = py * yModifier;
 		float z = pz * zModifier;
 		
-		print("X: " + x + "Y: " +  + y + "Z: " +  + z);
-		
-		//				float modifier = 1;
-		//
-		//				float x = xLength * modifier;
-		//				float y = yLength * modifier;
-		//				float z = zLength * modifier;
-		//
-		//				print("X: " + x + "Y: " +  + y + "Z: " +  + z + "Mod: " + modifier);
-		
+		this.body.velocity = Vector3.zero;
+		this.body.angularVelocity = Vector3.zero;
 		this.body.useGravity = true;
 		this.body.AddForce(x, y, z, ForceMode.Impulse);
 		
@@ -228,22 +260,56 @@ public class FootballMovementScript : MonoBehaviour {
 
 	void MoveBallViaBezier (float deltaTime)
 	{
-		float percent = this.currentTime / this.totalTime;
+		float percent = 0.0f;
 
+		if(this.type == 0)
+		{
+			percent = Linear(this.currentTime, 0, 1, this.totalTime);
+		}
+		else if(this.type == 1)
+		{
+			percent = SineOut(this.currentTime, 0, 1, this.totalTime);
+		}
+		else if(this.type == 2)
+		{
+			percent = CubeOut(this.currentTime, 0, 1, this.totalTime);
+		}
+		else if(this.type == 3)
+		{
+			percent = QuadOut(this.currentTime, 0, 1, this.totalTime);
+		}
+		else if(this.type == 4)
+		{
+			percent = ExpoOut(this.currentTime, 0, 1, this.totalTime);
+		}
+		else if(this.type == 4)
+		{
+			percent = CircOut(this.currentTime, 0, 1, this.totalTime);
+		}
+
+		this.previousDelta = deltaTime;
+		this.previousPosition = this.transform.position;
+		
+		Vector3 position = PositionOfBezierAtPercent(this.controlPoint1, this.controlPoint2, this.endPosition, percent);
+		this.transform.position = position;
+	}
+
+	public Vector3 PositionOfBezierAtPercent (Vector3 controlPoint1, Vector3 controlPoint2, Vector3 endPosition,  float percent)
+	{
 		float x1 = this.startPosition.x;
-		float x2 = this.controlPoint1.x;
-		float x3 = this.controlPoint2.x;
-		float x4 = this.endPosition.x;
+		float x2 = controlPoint1.x;
+		float x3 = controlPoint2.x;
+		float x4 = endPosition.x;
 		
 		float y1 = this.startPosition.y;
-		float y2 = this.controlPoint1.y;
-		float y3 = this.controlPoint2.y;
-		float y4 = this.endPosition.y;
+		float y2 = controlPoint1.y;
+		float y3 = controlPoint2.y;
+		float y4 = endPosition.y;
 		
 		float z1 = this.startPosition.z;
-		float z2 = this.controlPoint1.z;
-		float z3 = this.controlPoint2.z;
-		float z4 = this.endPosition.z;
+		float z2 = controlPoint1.z;
+		float z3 = controlPoint2.z;
+		float z4 = endPosition.z;
 		
 		float xaa = getPt( x1 , x2 , percent );
 		float yaa = getPt( y1 , y2 , percent );
@@ -270,11 +336,8 @@ public class FootballMovementScript : MonoBehaviour {
 		float x = getPt( xa , xb , percent );
 		float y = getPt( ya , yb , percent );
 		float z = getPt( za , zb , percent );
-		
-		this.previousDelta = deltaTime;
-		this.previousPosition = this.transform.position;
-		
-		this.transform.position = new Vector3(x, y, z);
+
+		return new Vector3(x, y, z);
 	}
 
 	float getPt(float n1, float n2, float perc)
@@ -283,4 +346,39 @@ public class FootballMovementScript : MonoBehaviour {
 		
 		return n1 + ( diff * perc );
 	} 
+	
+	float Linear(float t, float b, float c, float d)
+	{
+		return c*t/d + b;
+	}
+	
+	float ExpoOut(float t, float b, float c, float d)
+	{
+		return c * ( -Mathf.Pow( 2, -10 * t/d ) + 1 ) + b;
+	}
+	
+	float SineOut(float t, float b, float c, float d)
+	{
+		return c * Mathf.Sin(t/d * (Mathf.PI/2)) + b;
+	}
+
+	float QuadOut(float t, float b, float c, float d)
+	{
+		t /= d;
+		return -c * t*(t-2) + b;
+	}
+	
+	float CubeOut(float t, float b, float c, float d)
+	{
+		t /= d;
+		t--;
+		return c*(t*t*t + 1) + b;
+	}
+	
+	float CircOut(float t, float b, float c, float d)
+	{
+		t /= d;
+		t--;
+		return c * Mathf.Sqrt(1 - t*t) + b;
+	}
 }
