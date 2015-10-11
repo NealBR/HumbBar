@@ -7,6 +7,11 @@ public class PredictionScript : MonoBehaviour {
 	public GameObject tracerSmall;
 	public GameObject tracerEnds;
 
+	[Range(0, 100)]
+	public int predictionRangePercentage;
+
+	public int numberOfIndicators;
+
 	public float crossbarHeight;
 	Vector3 ballStartPosition;
 
@@ -24,45 +29,48 @@ public class PredictionScript : MonoBehaviour {
 	void Update () {
 	
 	}
+
+	public void RemovePredictors ()
+	{		
+		foreach(GameObject predictor in this.predictors)
+		{
+			Destroy(predictor);
+		}
+	}
 	
 	public void ShowVelocity (Vector2 velocity)
 	{
-		velocity = new Vector2(velocity.x * 0.1f, velocity.y * 0.2f);
-		
+		RemovePredictors();
+
+		velocity = new Vector2(velocity.x * 0.1f, velocity.y * 0.2f);		
 		AddPredictorsForVelocity(velocity);
 	}
 	
 	public void SetVelocity (Vector2 velocity)
 	{		
+		RemovePredictors();
+
 		velocity = new Vector2(velocity.x * 0.1f, velocity.y * 0.2f);
-
-		foreach(GameObject predictor in this.predictors)
-		{
-			Destroy(predictor);
-		}
-
 		this.football.SetVelocity(velocity);
 	}
 
 	void AddPredictorsForVelocity (Vector2 velocity)
 	{
-		foreach(GameObject predictor in this.predictors)
-		{
-			Destroy(predictor);
-		}
-
-		print(this.crossbarHeight);
-
 		Vector3 endPosition = new Vector3 (this.ballStartPosition.x + velocity.x, this.crossbarHeight, this.ballStartPosition.z + velocity.y);
 		
 		Vector3 controlPoint1 = this.football.ControlPoint1ForStartAndEndPosition(this.ballStartPosition, endPosition);
 		Vector3 controlPoint2 = this.football.ControlPoint2ForStartAndEndPosition(this.ballStartPosition, endPosition);
 
-		int numberOfPredictors = 20;
+		int range = this.predictionRangePercentage;
+		int numberOfPredictors = this.numberOfIndicators;
+
+		float mod = (range / numberOfPredictors);
+		float index = 0;
 
 		for(int i = 0; i < numberOfPredictors; i++)
 		{
-			float percent = (float)i / (float)numberOfPredictors;
+			index += mod;
+			float percent = index / 100.0f;
 			Vector3 position = this.football.PositionOfBezierAtPercent(controlPoint1, controlPoint2, endPosition, percent);
 			
 			GameObject predictor = GameObject.Instantiate(this.tracerSmall);

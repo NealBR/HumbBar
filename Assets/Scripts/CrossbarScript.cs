@@ -17,6 +17,8 @@ public class CrossbarScript : MonoBehaviour {
 
 	void OnCollisionEnter (Collision col)
 	{
+		print("HIT");
+		FootballGameManager.BroadcastToGameManager("CrossbarHit");
 		//this.gameManager.BallHitCrossbar ();
 		//this.goalScript.GoalsWereHit ();
 	}

@@ -53,7 +53,6 @@ public class FootballMovementScript : MonoBehaviour {
 	
 	Transform crossbar;
 
-	float previousDelta;
 	Vector3 previousPosition;
 
 	// Use this for initialization
@@ -86,10 +85,7 @@ public class FootballMovementScript : MonoBehaviour {
 	public void SetVelocity (Vector2 velocity)
 	{		
 		this.endPosition = new Vector3 (this.startPosition.x + velocity.x, this.crossbar.position.y, this.startPosition.z + velocity.y);
-		
-		float xLength = this.endPosition.x - this.startPosition.x;
-		float zLength = this.endPosition.z - this.startPosition.z;
-		
+
 		this.controlPoint1 = ControlPoint1ForStartAndEndPosition(this.startPosition, this.endPosition);
 		this.controlPoint2 = ControlPoint2ForStartAndEndPosition(this.startPosition, this.endPosition);
 	
@@ -165,6 +161,11 @@ public class FootballMovementScript : MonoBehaviour {
 		this.transform.rotation = Quaternion.identity;
 	}
 
+	void ResetAfterNoHit ()
+	{
+		FootballGameManager.BroadcastToGameManager("NoCrossbarHit");
+	}
+
 	void ShouldKick()
 	{
 		this.kicked = true;
@@ -182,12 +183,12 @@ public class FootballMovementScript : MonoBehaviour {
 		{
 			if(!this.forced)
 			{
-				print(this.previousPosition);
-				print(this.transform.position);
+//				print(this.previousPosition);
+//				print(this.transform.position);
 
 				AddForceAfterBezier();
 
-				Invoke("Reset", 2.0f);
+				Invoke("ResetAfterNoHit", 2.0f);
 			}
 			return;
 		}
@@ -287,7 +288,6 @@ public class FootballMovementScript : MonoBehaviour {
 			percent = CircOut(this.currentTime, 0, 1, this.totalTime);
 		}
 
-		this.previousDelta = deltaTime;
 		this.previousPosition = this.transform.position;
 		
 		Vector3 position = PositionOfBezierAtPercent(this.controlPoint1, this.controlPoint2, this.endPosition, percent);

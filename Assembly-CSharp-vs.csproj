@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\CrossbarScript.cs" />
      <Compile Include="Assets\Scripts\CrowdParalax.cs" />
      <Compile Include="Assets\Scripts\DragRecogniser.cs" />
+     <Compile Include="Assets\Scripts\FootballGameManager.cs" />
      <Compile Include="Assets\Scripts\FootballMovementScript.cs" />
      <Compile Include="Assets\Scripts\FootballScript.cs" />
      <Compile Include="Assets\Scripts\FootballWithArrowScript.cs" />
@@ -59,6 +60,8 @@
      <Compile Include="Assets\Scripts\PitchScript.cs" />
      <Compile Include="Assets\Scripts\PredictionScript.cs" />
      <Compile Include="Assets\Scripts\SineMovement.cs" />
+     <Compile Include="Assets\Scripts\Spawns\SpawnManager.cs" />
+     <Compile Include="Assets\Scripts\Spawns\SpawnObject.cs" />
      <Compile Include="Assets\Scripts\TestScript.cs" />
      <Compile Include="Assets\Scripts\TouchRecogniser.cs" />
  <Reference Include="UnityEngine.UI">
