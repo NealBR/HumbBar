@@ -11,6 +11,8 @@ public class PredictionScript : MonoBehaviour {
 	public int predictionRangePercentage;
 
 	public int numberOfIndicators;
+	
+	public bool showGoalPosition;
 
 	public float crossbarHeight;
 	Vector3 ballStartPosition;
@@ -79,6 +81,7 @@ public class PredictionScript : MonoBehaviour {
 			this.predictors.Add(predictor);
 		}
 
+		if(this.showGoalPosition)
 		{
 			Vector3 position = this.football.PositionOfBezierAtPercent(controlPoint1, controlPoint2, endPosition, 1.0f);
 			
