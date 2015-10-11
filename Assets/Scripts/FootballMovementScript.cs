@@ -215,7 +215,8 @@ public class FootballMovementScript : MonoBehaviour {
 				Time.timeScale = this.timeScaleToDrop;
 			}
 		}
-
+		
+		this.transform.Rotate(Random.Range(0, 360), Random.Range(0, 360),Random.Range(0, 360));
 		MoveBallViaBezier(deltaTime);
 	}
 
@@ -223,6 +224,7 @@ public class FootballMovementScript : MonoBehaviour {
 	{
 		this.body.velocity = Vector3.zero;
 		this.body.angularVelocity = Vector3.zero;
+
 		float x1 = this.controlPoint2.x;
 		float y1 = this.controlPoint2.y;
 		float z1 = this.controlPoint2.z;
