@@ -830,7 +830,6 @@ GameObject:
   - 4: {fileID: 1271114784}
   - 33: {fileID: 1271114786}
   - 23: {fileID: 1271114785}
-  - 64: {fileID: 1271114787}
   m_Layer: 0
   m_Name: Visual Goals
   m_TagString: Untagged
@@ -883,18 +882,6 @@ MeshFilter:
     type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1271114783}
-  m_Mesh: {fileID: 4300004, guid: 5e8d6c0c68bd5cd4abb62843d7d4a8bf, type: 3}
---- !u!64 &1271114787
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1271114783}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
   m_Mesh: {fileID: 4300004, guid: 5e8d6c0c68bd5cd4abb62843d7d4a8bf, type: 3}
 --- !u!1 &1322159165
 GameObject:
