@@ -46,6 +46,7 @@ public class FootballGameManager : MonoBehaviour {
 
 	void SpawnFootball ()
 	{
+
 		if(this.football)
 		{
 			Destroy(this.football);
@@ -57,6 +58,13 @@ public class FootballGameManager : MonoBehaviour {
 		Vector2 position = this.spawnManager.GetRandomPosition();
 		this.football.transform.position = new Vector3(position.x, this.football.transform.localScale.y * 0.5f, position.y);
 
+		Vector3 cameraOffset = this.spawnManager.GetCameraPositionOffset();
+		Vector3 cameraPosition = new Vector3(position.x - cameraOffset.x, cameraOffset.y, position.y - cameraOffset.z);
+		this.mainCamera.transform.position = cameraPosition;
+
+		Vector3 rotation = this.spawnManager.GetCameraRotation();
+		this.mainCamera.transform.Rotate(rotation.x, rotation.y, rotation.z, Space.World);
+
 		FootballMovementScript footballScript = this.football.GetComponent<FootballMovementScript>();
 		footballScript.curve = this.spawnManager.GetRandomCurve();
 		footballScript.height = this.spawnManager.GetRandomHeight();
@@ -66,7 +74,7 @@ public class FootballGameManager : MonoBehaviour {
 		this.dragRecogniser.movingFootball = this.football.GetComponent<FootballMovementScript>();
 		this.dragRecogniser.enabled = true;
 
-		PositionCamera();
+		//PositionCamera();
 
 		this.spawningBall = false;
 	}
