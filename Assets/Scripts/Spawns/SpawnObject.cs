@@ -15,6 +15,9 @@ public class SpawnObject : MonoBehaviour {
 	[Range(0, 10)]
 	public int height;
 
+	public Vector3 cameraPositionOffset;
+	public Vector3 cameraRotationOffset;
+
 	// Use this for initialization
 	void Start () {
 	

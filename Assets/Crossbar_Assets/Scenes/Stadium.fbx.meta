@@ -9,19 +9,24 @@ ModelImporter:
     100002: Level00_Goals
     100004: Level00_Stadium
     100006: //RootNode
+    100008: Level00_ScoreScreen
     400000: Level00_Crowd
     400002: Level00_Goals
     400004: Level00_Stadium
     400006: //RootNode
+    400008: Level00_ScoreScreen
     2300000: Level00_Crowd
     2300002: Level00_Goals
     2300004: Level00_Stadium
+    2300006: Level00_ScoreScreen
     3300000: Level00_Crowd
     3300002: Level00_Goals
     3300004: Level00_Stadium
+    3300006: Level00_ScoreScreen
     4300000: Level00_Stadium
     4300002: Level00_Crowd
     4300004: Level00_Goals
+    4300006: Level00_ScoreScreen
     9500000: //RootNode
   materials:
     importMaterials: 1

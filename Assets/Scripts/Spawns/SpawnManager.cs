@@ -88,4 +88,18 @@ public class SpawnManager : MonoBehaviour {
 		
 		return spawnObject.time;
 	}
+
+	public Vector3 GetCameraPositionOffset ()
+	{
+		SpawnObject spawnObject = this.spawnTransform.GetComponent<SpawnObject>();
+		
+		return spawnObject.cameraPositionOffset;
+	}
+	
+	public Vector3 GetCameraRotation ()
+	{
+		SpawnObject spawnObject = this.spawnTransform.GetComponent<SpawnObject>();
+		
+		return spawnObject.cameraRotationOffset;
+	}
 }

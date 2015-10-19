@@ -19,7 +19,6 @@ Plugin MasterHandler 2 SceneEditor
 VERS 2
 { CurrentWorkspace
   Name "<default>"
-  WindowDimensions 104 117 2bc 240
   Divider1 0.5
   LayoutItemFilterEnabled 0
   LayoutItemChannelFilterEnabled 0
@@ -73,12 +72,17 @@ VERS 2
   BlockKeyColor 99 ae cf ff
   BlockGroupColor 64 85 b6 ff
   DSAllowChannelGroupSelection 1
+  LayoutItemListSortMode 6
+  SurfaceListSortMode 0
+  ChannelListSortMode 0
 }
 EndPlugin
 Plugin ViewportObjectHandler 1 .VPR
 0
 20
 1
+1
+0
 1
 0
 EndPlugin
@@ -88,6 +92,8 @@ Plugin ViewportObjectHandler 2 .VPR
 1
 1
 0
+1
+0
 EndPlugin
 Plugin ViewportObjectHandler 3 .VPR
 0
@@ -95,11 +101,15 @@ Plugin ViewportObjectHandler 3 .VPR
 1
 1
 0
+1
+0
 EndPlugin
 Plugin ViewportObjectHandler 4 .VPR
 0
 20
 1
+1
+0
 1
 0
 EndPlugin
@@ -117,7 +127,7 @@ ColorSpace8BitToFloat 0
 ColorSpaceCorrectOpenGL 0
 ColorSpaceAffectPicker 0
 FirstBackgroundImageSyncFrame 0
-NavigationDesiredDevice (none)
+NavigationDesiredDevice (any)
 
 LoadObjectLayer 1 10000000 Objects/Level00_Stadium.lwo
 ChangeObject 0
@@ -191,6 +201,8 @@ CtrlScaleItemBlend 1
 PathAlignLookAhead 0.033
 PathAlignMaxLookSteps 10
 PathAlignReliableDist 0.001
+PivotPosition 0 0 0
+PivotRotation 0 0 0
 SplineFlags 0
 SplineFit 0
 IKInitialState 0
@@ -319,6 +331,11 @@ ObjGIRadiosityTolerance 0.292893
 ObjGIMinPixelSpacing 4.000000
 ObjGIMaxPixelSpacing 100.000000
 ShadowOptions 7
+PolygonEdgeFlags 0
+PolygonEdgeThickness 1 1 1 1 1 1 1
+PolygonEdgeColor 0 0 0
+PolygonEdgesZScale 1
+PolygonEdgesIAngle 0.3490658
 NodeEdges 0
 { NodalEdge_Block
   { Root
@@ -416,6 +433,8 @@ CtrlScaleItemBlend 1
 PathAlignLookAhead 0.033
 PathAlignMaxLookSteps 10
 PathAlignReliableDist 0.001
+PivotPosition 0 0 0
+PivotRotation 0 0 0
 SplineFlags 0
 SplineFit 0
 IKInitialState 0
@@ -544,6 +563,11 @@ ObjGIRadiosityTolerance 0.292893
 ObjGIMinPixelSpacing 4.000000
 ObjGIMaxPixelSpacing 100.000000
 ShadowOptions 7
+PolygonEdgeFlags 0
+PolygonEdgeThickness 1 1 1 1 1 1 1
+PolygonEdgeColor 0 0 0
+PolygonEdgesZScale 1
+PolygonEdgesIAngle 0.3490658
 NodeEdges 0
 { NodalEdge_Block
   { Root
@@ -584,7 +608,7 @@ Channel 0
 Channel 1
 { Envelope
   1
-  Key 0 0 0 0 0 0 0 0 0
+  Key -0.042140666395425803 0 0 0 0 0 0 0 0
   Behaviors 1 1
 }
 Channel 2
@@ -641,6 +665,8 @@ CtrlScaleItemBlend 1
 PathAlignLookAhead 0.033
 PathAlignMaxLookSteps 10
 PathAlignReliableDist 0.001
+PivotPosition 0 0 0
+PivotRotation 0 0 0
 SplineFlags 0
 SplineFit 0
 IKInitialState 0
@@ -769,6 +795,11 @@ ObjGIRadiosityTolerance 0.292893
 ObjGIMinPixelSpacing 4.000000
 ObjGIMaxPixelSpacing 100.000000
 ShadowOptions 7
+PolygonEdgeFlags 0
+PolygonEdgeThickness 1 1 1 1 1 1 1
+PolygonEdgeColor 0 0 0
+PolygonEdgesZScale 1
+PolygonEdgesIAngle 0.3490658
 NodeEdges 0
 { NodalEdge_Block
   { Root
@@ -794,65 +825,40 @@ NodeEdges 0
   }
 }
 
-AmbientColor 0.823529 0.976471 1
-AmbientIntensity 0.52
-DoubleSidedAreaLights 0
-EnableLensFlares 0
-EnableVolumetricLights 0
-NoiseReduction 1
-RadiosityType 1
-RadiosityInterpolated 1
-RadiosityTransparency 0
-RadiosityIntensity 1
-RadiosityTolerance 0.2928932
-RadiosityRays 100
-SecondaryBounceRays 50
-RadiosityMinPixelSpacing 3
-RadiosityMaxPixelSpacing 100
-RadiosityMultiplier 1
-RadiosityDirectionalRays 0
-RadiosityUseGradients 0
-RadiosityUseBehindTest 1
-BlurRadiosity 1
-RadiosityFlags 0
-RadiosityCacheModulus 1
-RadiositySaveEachFrame 0
-RadiosityCacheFilePath M:Radiosity/radiosity.cache
-PixelFilterForceMT 0
-
-AddLight 20000000
-LightName Light
-ShowLight 1 -1 0.941176 0.376471 0.941176
-LightMotion
+LoadObjectLayer 1 10000001 M:Projects/CrossBar_Challenge/Concept_Art/Crossbar_Assets/Objects/Level00_ScoreScreen.lwo
+ChangeObject 0
+ShowObject 7 7
+Group 0
+ObjectMotion
 NumChannels 9
 Channel 0
 { Envelope
   1
-  Key -90.311965942382813 0 0 0 0 0 0 0 0
+  Key 0 0 0 0 0 0 0 0 0
   Behaviors 1 1
 }
 Channel 1
 { Envelope
   1
-  Key 102.95111083984376 0 0 0 0 0 0 0 0
+  Key 8.284611701965332 0 0 0 0 0 0 0 0
   Behaviors 1 1
 }
 Channel 2
 { Envelope
   1
-  Key -114.78213500976562 0 0 0 0 0 0 0 0
+  Key 49.611507415771484 0 0 0 0 0 0 0 0
   Behaviors 1 1
 }
 Channel 3
 { Envelope
   1
-  Key 1.0594149827957151 0 0 0 0 0 0 0 0
+  Key 0 0 0 0 0 0 0 0 0
   Behaviors 1 1
 }
 Channel 4
 { Envelope
   1
-  Key 0.64053577184677124 0 0 0 0 0 0 0 0
+  Key 0 0 0 0 0 0 0 0 0
   Behaviors 1 1
 }
 Channel 5
@@ -891,6 +897,267 @@ CtrlScaleItemBlend 1
 PathAlignLookAhead 0.033
 PathAlignMaxLookSteps 10
 PathAlignReliableDist 0.001
+PivotPosition 0 0 0
+PivotRotation 0 0 0
+SplineFlags 0
+SplineFit 0
+IKInitialState 0
+UseIKChainValues 1
+SubPatchLevel 3 3
+APSDisplay
+{ APS
+  Version 1
+  Method 0
+  { VParm
+    { ObjectLevel
+      0
+      { VariantParameter
+        3
+        0
+        { ParameterValue
+          3
+          0
+        }
+      }
+    }
+    { PolygonLevel
+      0
+      { VariantParameter
+        3
+        0
+        { ParameterValue
+          3
+          0
+        }
+      }
+    }
+    { PolygonPixelSize
+      0
+      { VariantParameter
+        3
+        0
+        { ParameterValue
+          256
+          0
+        }
+      }
+    }
+  }
+}
+APSRender
+{ APS
+  Version 1
+  Method 0
+  { VParm
+    { ObjectLevel
+      0
+      { VariantParameter
+        3
+        0
+        { ParameterValue
+          3
+          0
+        }
+      }
+    }
+    { PolygonLevel
+      0
+      { VariantParameter
+        3
+        0
+        { ParameterValue
+          3
+          0
+        }
+      }
+    }
+    { PolygonPixelSize
+      0
+      { VariantParameter
+        3
+        0
+        { ParameterValue
+          256
+          0
+        }
+      }
+    }
+  }
+}
+NodeDisplacement 0
+{ Nodal_Block
+  { Root
+    Location 0 0
+    Zoom 1
+    Disabled 1
+  }
+  Version 1
+  { Nodes
+    Server "Displacement"
+    { Tag
+      RealName "Displacement"
+      Name "Displacement"
+      Coordinates -10 -10
+      Mode 1
+      { Data
+      }
+      Preview ""
+      Comment ""
+    }
+    Server "Input"
+    { Tag
+      RealName "Input"
+      Name "Input"
+      Coordinates -30 -10
+      Mode 1
+      { Data
+      }
+      Preview "Object Position"
+      Comment ""
+    }
+  }
+  { Connections
+  }
+}
+NodeDisplacementOrder 0
+UseObjGI 0
+ObjGIRadiosityRays 64
+ObjGISecondaryBounceRays 16
+ObjGIRadiosityTolerance 0.292893
+ObjGIMinPixelSpacing 4.000000
+ObjGIMaxPixelSpacing 100.000000
+ShadowOptions 7
+PolygonEdgeFlags 0
+PolygonEdgeThickness 1 1 1 1 1 1 1
+PolygonEdgeColor 0 0 0
+PolygonEdgesZScale 1
+PolygonEdgesIAngle 0.3490658
+NodeEdges 0
+{ NodalEdge_Block
+  { Root
+    Location 0 0
+    Zoom 1
+    Disabled 1
+  }
+  Version 1
+  { Nodes
+    Server "Edge"
+    { Tag
+      RealName "Edge"
+      Name "Edge"
+      Coordinates -10 -10
+      Mode 1
+      { Data
+      }
+      Preview ""
+      Comment ""
+    }
+  }
+  { Connections
+  }
+}
+
+AmbientColor 0.823529 0.976471 1
+AmbientIntensity 0.52
+DoubleSidedAreaLights 0
+EnableLensFlares 0
+EnableVolumetricLights 0
+NoiseReduction 1
+EnableMipMapping 1
+RadiosityType 1
+RadiosityInterpolated 1
+RadiosityTransparency 0
+RadiosityIntensity 1
+RadiosityTolerance 0.2928932
+RadiosityRays 100
+SecondaryBounceRays 50
+RadiosityMinPixelSpacing 3
+RadiosityMaxPixelSpacing 100
+RadiosityMultiplier 1
+RadiosityDirectionalRays 0
+RadiosityUseGradients 0
+RadiosityUseBehindTest 1
+BlurRadiosity 1
+ISMapSize 1024
+RadiosityFlags 0
+RadiosityCacheModulus 1
+RadiositySaveEachFrame 0
+RadiosityCacheFilePath M:Radiosity/radiosity.cache
+PixelFilterForceMT 0
+
+AddLight 20000000
+LightName Light
+ShowLight 1 -1 0.941176 0.376471 0.941176
+LightMotion
+NumChannels 9
+Channel 0
+{ Envelope
+  1
+  Key -101.13491821289062 0 0 0 0 0 0 0 0
+  Behaviors 1 1
+}
+Channel 1
+{ Envelope
+  1
+  Key 97.671157836914063 0 0 0 0 0 0 0 0
+  Behaviors 1 1
+}
+Channel 2
+{ Envelope
+  1
+  Key -67.740875244140625 0 0 0 0 0 0 0 0
+  Behaviors 1 1
+}
+Channel 3
+{ Envelope
+  1
+  Key 0.98436552286148082 0 0 0 0 0 0 0 0
+  Behaviors 1 1
+}
+Channel 4
+{ Envelope
+  1
+  Key 0.62831830978393555 0 0 0 0 0 0 0 0
+  Behaviors 1 1
+}
+Channel 5
+{ Envelope
+  1
+  Key 0 0 0 0 0 0 0 0 0
+  Behaviors 1 1
+}
+Channel 6
+{ Envelope
+  1
+  Key 1 0 0 0 0 0 0 0 0
+  Behaviors 1 1
+}
+Channel 7
+{ Envelope
+  1
+  Key 1 0 0 0 0 0 0 0 0
+  Behaviors 1 1
+}
+Channel 8
+{ Envelope
+  1
+  Key 1 0 0 0 0 0 0 0 0
+  Behaviors 1 1
+}
+IKInitCustomFrame 0
+GoalStrength 1
+IKFKBlending 0
+IKSoftMin 0.25
+IKSoftMax 0.75
+CtrlPosItemBlend 1
+CtrlRotItemBlend 1
+CtrlScaleItemBlend 1
+
+PathAlignLookAhead 0.033
+PathAlignMaxLookSteps 10
+PathAlignReliableDist 0.001
+PivotPosition 0 0 0
+PivotRotation 0 0 0
 SplineFlags 0
 SplineFit 0
 IKInitialState 0
@@ -912,11 +1179,8 @@ FlareRingSize 0.22
 FlareRandStreakInt 0.03
 FlareRandStreakDens 50
 FlareRandStreakSharp 6
-ShadowType 2
+ShadowType 1
 ShadowColor 0.305882 0.286275 0.372549
-ShadowMapSize 512
-UseConeAngle 1
-ShadowFuzziness 1
 Plugin LightHandler 1 SpotLight
 EndPlugin
 
@@ -928,7 +1192,7 @@ NumChannels 6
 Channel 0
 { Envelope
   1
-  Key -14.008322715759276 0 0 0 0 0 0 0 0
+  Key -0.0023979693651199341 0 0 0 0 0 0 0 0
   Behaviors 1 1
 }
 Channel 1
@@ -940,19 +1204,19 @@ Channel 1
 Channel 2
 { Envelope
   1
-  Key -27.32861328125 0 0 0 0 0 0 0 0
+  Key -23.322551727294918 0 0 0 0 0 0 0 0
   Behaviors 1 1
 }
 Channel 3
 { Envelope
   1
-  Key 0.4450589120388031 0 0 0 0 0 0 0 0
+  Key 0 0 0 0 0 0 0 0 0
   Behaviors 1 1
 }
 Channel 4
 { Envelope
   1
-  Key 0.027925282716751088 0 0 0 0 0 0 0 0
+  Key -0.090757116675376892 0 0 0 0 0 0 0 0
   Behaviors 1 1
 }
 Channel 5
@@ -973,14 +1237,18 @@ CtrlScaleItemBlend 1
 PathAlignLookAhead 0.033
 PathAlignMaxLookSteps 10
 PathAlignReliableDist 0.001
+PivotPosition 0 0 0
+PivotRotation 0 0 0
 SplineFlags 0
 SplineFit 0
 IKInitialState 0
 UseIKChainValues 1
 ZoomFactor 3.2
 ZoomType 1
-ResolutionMultiplier 1.0
-FrameSize 700 900
+ResolutionMultiplier 2.0
+FrameSize 1536 2048
+OverscanMode 0
+OverscanSize 0 0 0 0
 PixelAspect 1
 MotionBlur 0
 MotionBlurPasses 1
@@ -1018,7 +1286,7 @@ NumChannels 6
 Channel 0
 { Envelope
   1
-  Key -5.230799674987793 0 0 0 0 0 0 0 0
+  Key -0.19161882996559143 0 0 0 0 0 0 0 0
   Behaviors 1 1
 }
 Channel 1
@@ -1030,19 +1298,19 @@ Channel 1
 Channel 2
 { Envelope
   1
-  Key -2.6660325527191162 0 0 0 0 0 0 0 0
+  Key -23.289957046508789 0 0 0 0 0 0 0 0
   Behaviors 1 1
 }
 Channel 3
 { Envelope
   1
-  Key 0.94596862792968772 0 0 0 0 0 0 0 0
+  Key 0.0069818496704101563 0 0 0 0 0 0 0 0
   Behaviors 1 1
 }
 Channel 4
 { Envelope
   1
-  Key -0.13962632417678833 0 0 0 0 0 0 0 0
+  Key -0.16755157709121704 0 0 0 0 0 0 0 0
   Behaviors 1 1
 }
 Channel 5
@@ -1063,6 +1331,8 @@ CtrlScaleItemBlend 1
 PathAlignLookAhead 0.033
 PathAlignMaxLookSteps 10
 PathAlignReliableDist 0.001
+PivotPosition 0 0 0
+PivotRotation 0 0 0
 SplineFlags 0
 SplineFit 0
 IKInitialState 0
@@ -1071,6 +1341,8 @@ ZoomFactor 3.2
 ZoomType 1
 ResolutionMultiplier 1.0
 FrameSize 640 480
+OverscanMode 0
+OverscanSize 0 0 0 0
 PixelAspect 1
 MotionBlur 0
 MotionBlurPasses 1
@@ -1107,13 +1379,13 @@ AdaptiveSampling 0
 
 UseBackgroundColor 0
 BackgroundColor 0 0 0
-SolidBackdrop 1
-BackdropColor 0 0 0
-ZenithColor 0.6196 0.736 1
-SkyColor 0.8824 0.9177 1
+SolidBackdrop 0
+BackdropColor 1 0.670588 0.309804
+ZenithColor 1 0.490196 0.4
+SkyColor 1 0.921569 0.607843
 GroundColor 0.8824 0.9177 1
 NadirColor 0.1216 0.0948 0.083
-SkySqueezeAmount 6
+SkySqueezeAmount 4.55
 GroundSqueezeAmount 6
 FogType 0
 FogMinDistance 0
@@ -1147,17 +1419,17 @@ ViewConfiguration 11
 DefineView 0
 ViewType 9
 ViewLevel 5
-ViewAimpoint 0 0 0
-ViewZoomFactor 32.6724
+ViewAimpoint -0.1825164 0 35.36019
+ViewZoomFactor 1.840375
 ViewXRay 1
 ViewMBDofPreview 0
 ViewHeadlight 0
 DefineView 1
 ViewType 5
-ViewLevel 4
+ViewLevel 3
 CenterItem 1
-ViewAimpoint 0 0 0
-ViewZoomFactor 0.3685676
+ViewAimpoint 0 8.284612 49.61151
+ViewZoomFactor 4.531539
 ViewXRay 1
 ViewMBDofPreview 0
 ViewHeadlight 0
@@ -1165,16 +1437,18 @@ DefineView 2
 ViewType 1
 ViewLevel 5
 CenterItem 1
-ViewAimpoint 0 0 0
-ViewZoomFactor 9.646463
+ViewAimpoint 0 8.284612 49.61151
+ViewZoomFactor 0.3560126
 ViewXRay 1
 ViewMBDofPreview 0
 ViewHeadlight 0
 DefineView 3
-ViewType 8
+ViewType 7
 ViewLevel 5
-ViewAimpoint -0.01000023 56.81216 -39.86592
-ViewZoomFactor 0.1907609
+CenterItem 1
+ViewAimpoint 0 8.284612 49.61151
+ViewRotation 2.9722e-005 1.400007 0
+ViewZoomFactor 2.345406
 ViewXRay 1
 ViewMBDofPreview 0
 ViewHeadlight 0
@@ -1201,9 +1475,9 @@ Plugin VirtualStudio 1 VirtualStudio
 }
 EndPlugin
 
-CurrentObject 0
+CurrentObject 3
 CurrentLight 0
-CurrentCamera 0
+CurrentCamera 1
 GraphEditorData
 { GraphEd_Favorites
 }
@@ -1211,7 +1485,7 @@ GraphEditorData
   1
 }
 ImageEditorData
-NumberOfClips 27
+NumberOfClips 20
 Clip 0
 { ClipObject
   "Pitch_Texture_00.png"
@@ -1328,49 +1602,9 @@ Clip 18
 }
 Clip 19
 { ClipObject
-  "Girders.png(1)"
+  "TVScreen.png"
   128
   0
 }
-Clip 20
-{ ClipObject
-  "PiratePete.png(1)"
-  128
-  0
-}
-Clip 21
-{ ClipObject
-  "Bunny_Costume.png(1)"
-  128
-  0
-}
-Clip 22
-{ ClipObject
-  "Male_00.png(1)"
-  128
-  0
-}
-Clip 23
-{ ClipObject
-  "Male_01.png(1)"
-  128
-  0
-}
-Clip 24
-{ ClipObject
-  "Male_02.png(1)"
-  128
-  0
-}
-Clip 25
-{ ClipObject
-  "Male_03.png(1)"
-  128
-  0
-}
-Clip 26
-{ ClipObject
-  "GoalNets.png(1)"
-  128
-  0
-}
+
+ContentDir M:Projects/CrossBar_Challenge/Project/CrossBar Project/Assets/Crossbar_Assets
