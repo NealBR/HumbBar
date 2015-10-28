@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\FootballGameManager.cs" />
      <Compile Include="Assets\Scripts\FootballMovementScript.cs" />
      <Compile Include="Assets\Scripts\FootballScript.cs" />
+     <Compile Include="Assets\Scripts\FootballSpriteScript.cs" />
      <Compile Include="Assets\Scripts\FootballWithArrowScript.cs" />
      <Compile Include="Assets\Scripts\FootballWithBallsScript.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />

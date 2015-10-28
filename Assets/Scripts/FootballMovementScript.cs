@@ -5,7 +5,8 @@ public class FootballMovementScript : MonoBehaviour {
 	
 	public GameManager gameManager;
 
-	public PredictionScript predictor;
+	public PredictionScript predictor;	
+	public FootballSpriteScript sprite;
 	
 	public GameObject tracer;
 	public GameObject tracerSmall;
@@ -169,6 +170,7 @@ public class FootballMovementScript : MonoBehaviour {
 	void ShouldKick()
 	{
 		this.kicked = true;
+		this.sprite.wasHit = true;
 	}
 	
 	// Update is called once per frame
@@ -215,8 +217,7 @@ public class FootballMovementScript : MonoBehaviour {
 				Time.timeScale = this.timeScaleToDrop;
 			}
 		}
-		
-		this.transform.Rotate(Random.Range(0, 360), Random.Range(0, 360),Random.Range(0, 360));
+
 		MoveBallViaBezier(deltaTime);
 	}
 
